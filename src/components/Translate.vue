@@ -1,6 +1,7 @@
 <script setup>
 import { computed, useSlots } from "vue";
 import { useStorage } from "@vueuse/core";
+import TranslationStore from "../stores/TranslationStore.js";
 
 const props = defineProps({
   translationKey: {
@@ -21,12 +22,16 @@ const props = defineProps({
   },
 })
 
+const translateMethod = TranslationStore.value.translateMethod
+
 const slots = useSlots()
 const hasSlot = computed(() => !!slots.default)
+
+const translation = computed(() => translateMethod(props.translationKey, props.options))
+
 const content = computed(() => {
   // If there is no slot, return the translation with the given translation method
-  // if(!hasSlot.value) return useTranslation(props.translationKey, props.options)
-  if(!hasSlot.value) return props.translationKey
+  if(!hasSlot.value) return translation.value === props.translationKey ? props.defaultText : translation.value
   if (slots.default()[0]?.children !== props.translationKey) return slots.default()[0]?.children
   return props.defaultText
 })

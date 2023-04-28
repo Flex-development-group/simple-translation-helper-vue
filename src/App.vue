@@ -5,6 +5,8 @@ import TranslationHub from "./components/TranslationHub.vue";
 
 <template>
   <div>
-    <translation-hub />
+    <translation-hub
+      :active="true"
+    />
   </div>
 </template>

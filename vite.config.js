@@ -7,7 +7,7 @@ export default defineConfig({
     lib: {
       entry: 'src/index.js',
       name: 'simple-translation-helper',
-      fileName: (format) => `simple-translation-helper.${format}.js`
+      fileName: (format) => `simple-translation-helper-vue.${format}.js`
     },
     rollupOptions: {
       external: ['vue'],
