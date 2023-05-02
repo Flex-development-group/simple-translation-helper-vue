@@ -15,7 +15,7 @@ import SimpleTranslation from 'simple-translation-helper-vue'
 import 'simple-translation-helper-vue/dist/style.css'
 
 Vue.use(SimpleTranslation, {
-    method: 'translate', // The translation method name to use
+    method: 't', // The translation method name to use. The `translate` component will use the $t method to translate text.
 })
 ```
 
@@ -81,10 +81,10 @@ The `translate` component has one default slot, which can be used to provide cus
 
 ## Usage example
 
-Here is an example of how you can use the `translate component`:
+Here is an example of how you can use the `translate` component:
 ```
 <template>
-  <TranslationComponent translationKey="greeting" defaultText="Hello, world!" />
+  <translate translationKey="greeting" defaultText="Hello, world!" />
 </template>
 ```
 
@@ -93,16 +93,16 @@ In this example, the component will look up the translation for the greeting key
 You can also use the default slot to provide custom content:
 ```vue
 <template>
-  <TranslationComponent translationKey="dashboard.title" defaultText="Welcome to my dashboard">
+  <translate translationKey="dashboard.title" defaultText="Welcome to my dashboard">
     <h1>{{$t("dashboard.title")}</h1>
-  </TranslationComponent>
+  </translate>
 </template>
 ```
 
 Finally, you can use the `as` prop to specify the HTML element to use for the rendered output:
 ```vue
 <template>
-  <TranslationComponent translationKey="greeting" defaultText="Hello, world!" as="h1" />
+  <translate translationKey="greeting" defaultText="Hello, world!" as="h1" />
 </template>
 
 ```
